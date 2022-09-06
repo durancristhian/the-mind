@@ -1,0 +1,15 @@
+.card {
+  background-color: white;
+  background-image: var(--card-bg);
+  background-size: cover;
+  border-radius: 0.5cm;
+  border: 0.25cm solid #111;
+  color: #111;
+  font-size: 4.5cm;
+  font-weight: bold;
+  height: 13cm;
+  line-height: 13cm;
+  text-align: center;
+  text-shadow: 0.1cm 0.1cm 0 rgba(0, 0, 0, 0.5);
+  width: 9cm;
+}
