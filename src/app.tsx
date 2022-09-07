@@ -47,7 +47,9 @@ export function App() {
         ))}
       </div>
       <h2>Revés de las cartas (100)</h2>
-      <EmptyCard backgroundImage={null}>The mind</EmptyCard>
+      <div className="cards-container">
+        <EmptyCard backgroundImage={null}>The mind</EmptyCard>
+      </div>
       <h2>Cartas (100)</h2>
       <div className="cards-container">
         {cards.map(({ number, backgroundImage }) => (
