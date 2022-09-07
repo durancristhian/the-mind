@@ -6,7 +6,7 @@ export const EmptyCard: FunctionComponent<{
 }> = ({ children, backgroundImage }) => {
   return (
     <div className="card" style={{ "--card-bg": `url('${backgroundImage}')` }}>
-      <div class="small-number center">{children}</div>
+      <div class="small-number center black">{children}</div>
     </div>
   );
 };
