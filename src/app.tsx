@@ -19,7 +19,8 @@ export function App() {
   }));
   const cards = Array.from({ length: 100 }).map((_, i) => ({
     number: i + 1,
-    backgroundImage: getImageUrl("cards", i + 1),
+    /* TODO: */
+    backgroundImage: i + 1 < 37 ? getImageUrl("cards", i + 1) : null,
   }));
 
   return (

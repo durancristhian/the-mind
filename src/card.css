@@ -4,15 +4,12 @@
   background-size: cover;
   border-radius: 0.5cm;
   border: 0.25cm solid #111;
+  color: #111;
   font-weight: bold;
   height: 13cm;
   position: relative;
   width: 9cm;
   white-space: nowrap;
-}
-
-.black {
-  color: #111;
 }
 
 .white {
@@ -25,20 +22,12 @@
   text-align: center;
 }
 
-.number.black {
-  text-shadow: 0.1cm 0.1cm 0 rgba(255, 255, 255, 0.75);
-}
-
 .number.white {
   text-shadow: 0.1cm 0.1cm 0 rgba(0, 0, 0, 0.75);
 }
 
 .small-number {
   font-size: 1cm;
-}
-
-.small-number.black {
-  text-shadow: 0.05cm 0.05cm 0 rgba(255, 255, 255, 0.75);
 }
 
 .small-number.white {
