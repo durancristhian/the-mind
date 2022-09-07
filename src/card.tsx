@@ -7,7 +7,11 @@ export const Card: FunctionComponent<{ backgroundImage: string | null }> = ({
 }) => {
   return (
     <div className="card" style={{ "--card-bg": `url('${backgroundImage}')` }}>
-      {children}
+      <div className="small-number top left">{children}</div>
+      <div className="small-number top right">{children}</div>
+      <div className="number">{children}</div>
+      <div className="small-number bottom left">{children}</div>
+      <div className="small-number bottom right">{children}</div>
     </div>
   );
 };

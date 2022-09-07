@@ -5,11 +5,52 @@
   border-radius: 0.5cm;
   border: 0.25cm solid #111;
   color: #111;
-  font-size: 4.5cm;
   font-weight: bold;
   height: 13cm;
+  position: relative;
+  width: 9cm;
+  white-space: nowrap;
+}
+
+.number {
+  font-size: 4.5cm;
   line-height: 13cm;
   text-align: center;
   text-shadow: 0.1cm 0.1cm 0 rgba(255, 255, 255, 0.75);
-  width: 9cm;
+}
+
+.small-number {
+  font-size: 1cm;
+  text-shadow: 0.05cm 0.05cm 0 rgba(255, 255, 255, 0.75);
+}
+
+.left,
+.right,
+.bottom,
+.top {
+  position: absolute;
+}
+
+.left {
+  left: 0.25cm;
+}
+
+.right {
+  right: 0.25cm;
+}
+
+.bottom {
+  bottom: 0.25cm;
+  transform: rotate(180deg);
+}
+
+.top {
+  top: 0.25cm;
+}
+
+.center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
