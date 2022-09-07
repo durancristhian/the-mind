@@ -8,19 +8,19 @@ function getImageUrl(concept: string, number: number) {
 
 export function App() {
   const lives = Array.from({ length: 5 }).map((_, i) => ({
-    number: i + 1,
+    backgroundImage: getImageUrl("lives", i + 1),
   }));
   const stars = Array.from({ length: 3 }).map((_, i) => ({
-    number: i + 1,
+    backgroundImage: getImageUrl("stars", i + 1),
   }));
   const levels = Array.from({ length: 12 }).map((_, i) => ({
     number: i + 1,
-    backgroundImage: getImageUrl("levels", i + 1),
+    backgroundImage: null /* getImageUrl("levels", i + 1) */,
   }));
   const cards = Array.from({ length: 100 }).map((_, i) => ({
     number: i + 1,
     /* TODO: */
-    backgroundImage: i + 1 < 37 ? getImageUrl("cards", i + 1) : null,
+    backgroundImage: i + 1 < 40 ? getImageUrl("cards", i + 1) : null,
   }));
 
   return (
@@ -28,14 +28,14 @@ export function App() {
       <h1>The mind</h1>
       <h2>Vidas (5)</h2>
       <div className="cards-container">
-        {lives.map(({ number }) => (
-          <EmptyCard backgroundImage={null}>Vida {number}</EmptyCard>
+        {lives.map(({ backgroundImage }) => (
+          <EmptyCard backgroundImage={backgroundImage} />
         ))}
       </div>
       <h2>Estrellitas (3)</h2>
       <div className="cards-container">
-        {stars.map(({ number }) => (
-          <EmptyCard backgroundImage={null}>Estrellita {number}</EmptyCard>
+        {stars.map(({ backgroundImage }) => (
+          <EmptyCard backgroundImage={backgroundImage} />
         ))}
       </div>
       <h2>Niveles (12)</h2>
@@ -48,7 +48,7 @@ export function App() {
       </div>
       <h2>Revés de las cartas (100)</h2>
       <div className="cards-container">
-        <EmptyCard backgroundImage={null}>The mind</EmptyCard>
+        <EmptyCard backgroundImage={getImageUrl("back", 1)}>The mind</EmptyCard>
       </div>
       <h2>Cartas (100)</h2>
       <div className="cards-container">

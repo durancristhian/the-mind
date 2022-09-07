@@ -1,6 +1,7 @@
 .card {
   background-color: white;
   background-image: var(--card-bg);
+  background-position: center center;
   background-size: cover;
   border-radius: 0.5cm;
   border: 0.25cm solid #111;
