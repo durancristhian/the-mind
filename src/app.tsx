@@ -2,8 +2,23 @@ import "./app.css";
 import { Card } from "./card";
 import { EmptyCard } from "./empty-card";
 
-function getImageUrl(concept: string, number: number) {
-  return new URL(`./${concept}/${number}.png`, import.meta.url).href;
+const liveBackgroundModules = import.meta.glob("./lives/*.png");
+const starBackgroundModules = import.meta.glob("./stars/*.png");
+const backBackgroundModules = import.meta.glob("./back/*.png");
+const cardBackgroundModules = import.meta.glob("./cards/*.png");
+
+function getImageUrl(
+  concept: string,
+  number: number,
+  bgModules: typeof cardBackgroundModules
+) {
+  const path = `./${concept}/${number}.png`;
+
+  if (!bgModules[path]) {
+    return null;
+  }
+
+  return new URL(path, import.meta.url).href;
 }
 
 function addDotIfNeeded(number: string) {
@@ -27,19 +42,18 @@ function addDotIfNeeded(number: string) {
 
 export function App() {
   const lives = Array.from({ length: 10 }).map((_, i) => ({
-    backgroundImage: getImageUrl("lives", i + 1),
+    backgroundImage: getImageUrl("lives", i + 1, liveBackgroundModules),
   }));
   const stars = Array.from({ length: 6 }).map((_, i) => ({
-    backgroundImage: getImageUrl("stars", i + 1),
+    backgroundImage: getImageUrl("stars", i + 1, starBackgroundModules),
   }));
   const levels = Array.from({ length: 12 }).map((_, i) => ({
     number: i + 1,
-    backgroundImage: null /* getImageUrl("levels", i + 1) */,
+    backgroundImage: getImageUrl("back", 1, backBackgroundModules),
   }));
   const cards = Array.from({ length: 200 }).map((_, i) => ({
     number: addDotIfNeeded(`${i + 1}`),
-    /* TODO: */
-    backgroundImage: i + 1 < 50 ? getImageUrl("cards", i + 1) : null,
+    backgroundImage: getImageUrl("cards", i + 1, cardBackgroundModules),
   }));
 
   return (
@@ -67,7 +81,11 @@ export function App() {
       </div>
       <h2>Revés de las cartas (200)</h2>
       <div className="cards-container">
-        <EmptyCard backgroundImage={getImageUrl("back", 1)}>The mind</EmptyCard>
+        <EmptyCard
+          backgroundImage={getImageUrl("back", 1, backBackgroundModules)}
+        >
+          The mind
+        </EmptyCard>
       </div>
       <h2>Cartas (200)</h2>
       <div className="cards-container">
