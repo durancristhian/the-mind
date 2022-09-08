@@ -38,7 +38,7 @@ export function App() {
   }));
   const cards = Array.from({ length: 200 }).map((_, i) => ({
     number: addDotIfNeeded(`${i + 1}`),
-    backgroundImage: i + 1 < 51 ? getImageUrl("cards", i + 1) : null,
+    backgroundImage: i + 1 < 61 ? getImageUrl("cards", i + 1) : null,
   }));
 
   return (
