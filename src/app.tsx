@@ -2,16 +2,16 @@ import "./app.css";
 import { Card } from "./card";
 import { EmptyCard } from "./empty-card";
 
-const liveBackgroundModules = import.meta.glob("/public/lives/*.png", {
+const liveBackgroundModules = import.meta.glob("./assets/lives/*.png", {
   eager: true,
 });
-const starBackgroundModules = import.meta.glob("/public/stars/*.png", {
+const starBackgroundModules = import.meta.glob("./assets/stars/*.png", {
   eager: true,
 });
-const backBackgroundModules = import.meta.glob("/public/back/*.png", {
+const backBackgroundModules = import.meta.glob("./assets/back/*.png", {
   eager: true,
 });
-const cardBackgroundModules = import.meta.glob("/public/cards/*.png", {
+const cardBackgroundModules = import.meta.glob("./assets/cards/*.png", {
   eager: true,
 });
 
@@ -20,7 +20,7 @@ function getImageUrl(
   number: number,
   bgModules: typeof cardBackgroundModules
 ) {
-  const path = `/public/${concept}/${number}.png`;
+  const path = `./assets/${concept}/${number}.png`;
 
   if (!bgModules[path]) {
     return null;
