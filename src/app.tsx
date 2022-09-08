@@ -3,9 +3,7 @@ import { Card } from "./card";
 import { EmptyCard } from "./empty-card";
 
 function getImageUrl(concept: string, number: number) {
-  const path = `./${concept}/${number}.png`;
-
-  return new URL(path, import.meta.url).href;
+  return new URL(`./${concept}/${number}.png`, import.meta.url).href;
 }
 
 function addDotIfNeeded(number: string) {
