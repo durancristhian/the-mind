@@ -3,7 +3,7 @@ import { Card } from "./card";
 import { EmptyCard } from "./empty-card";
 
 function getImageUrl(concept: string, number: number) {
-  const path = `./assets/${concept}/${number}.png`;
+  const path = `./${concept}/${number}.png`;
 
   return new URL(path, import.meta.url).href;
 }
