@@ -2,4 +2,4 @@
 
 ## prompt used in midjourney
 
-minimalistic seamless patter, warm color palette --ar 4:5
+minimalistic seamless pattern, warm color palette --ar 4:5
