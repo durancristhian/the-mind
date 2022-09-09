@@ -3,7 +3,7 @@ import { Card } from "./card";
 import { EmptyCard } from "./empty-card";
 
 function getImageUrl(concept: string, number: number) {
-  return new URL(`./${concept}/${number}.png`, import.meta.url).href;
+  return new URL(`./images/${concept}/${number}.png`, import.meta.url).href;
 }
 
 function addDotIfNeeded(number: string) {
@@ -25,22 +25,25 @@ function addDotIfNeeded(number: string) {
     : number;
 }
 
-export function App() {
-  const lives = Array.from({ length: 10 }).map((_, i) => ({
-    backgroundImage: getImageUrl("lives", i + 1),
-  }));
-  const stars = Array.from({ length: 6 }).map((_, i) => ({
-    backgroundImage: getImageUrl("stars", i + 1),
-  }));
-  const levels = Array.from({ length: 12 }).map((_, i) => ({
-    number: i + 1,
-    backgroundImage: getImageUrl("back", 1),
-  }));
-  const cards = Array.from({ length: 200 }).map((_, i) => ({
-    number: addDotIfNeeded(`${i + 1}`),
-    backgroundImage: i + 1 < 101 ? getImageUrl("cards", i + 1) : null,
-  }));
+const lives = Array.from({ length: 10 }).map((_, i) => ({
+  backgroundImage: getImageUrl("lives", i + 1),
+}));
 
+const stars = Array.from({ length: 6 }).map((_, i) => ({
+  backgroundImage: getImageUrl("stars", i + 1),
+}));
+
+const levels = Array.from({ length: 12 }).map((_, i) => ({
+  number: i + 1,
+  backgroundImage: getImageUrl("back", 1),
+}));
+
+const cards = Array.from({ length: 200 }).map((_, i) => ({
+  number: addDotIfNeeded(`${i + 1}`),
+  backgroundImage: i + 1 < 101 ? getImageUrl("cards", i + 1) : null,
+}));
+
+export function App() {
   return (
     <>
       <h1>The mind</h1>
