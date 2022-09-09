@@ -17,10 +17,8 @@
   .card {
     break-after: always;
     break-inside: avoid;
-  }
-
-  .card:not(:last-child) {
-    margin-bottom: 1cm;
+    display: inline-block;
+    margin: 0.1cm;
   }
 }
 
