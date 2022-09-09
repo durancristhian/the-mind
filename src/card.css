@@ -19,7 +19,7 @@
     break-inside: avoid;
   }
 
-  .card:not(:last-child) {
+  .card {
     margin-bottom: 1cm;
   }
 }
