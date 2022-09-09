@@ -3,23 +3,14 @@
   background-image: var(--card-bg);
   background-position: center center;
   background-size: cover;
-  border-radius: 0.5cm;
-  border: 0.25cm solid #111;
+  /* border-radius: 0.5cm; */
+  border: calc(var(--spacing) / 4) solid #111;
   color: #111;
   font-weight: bold;
-  height: 13cm;
+  height: var(--card-height);
   position: relative;
-  width: 9cm;
+  width: var(--card-width);
   white-space: nowrap;
-}
-
-@media print {
-  .card {
-    break-after: always;
-    break-inside: avoid;
-    display: inline-block;
-    margin: 0.1cm;
-  }
 }
 
 .white {
@@ -27,21 +18,22 @@
 }
 
 .number {
-  font-size: 3.5cm;
-  line-height: 13cm;
+  font-size: var(--font-size-lg);
   text-align: center;
 }
 
 .number.white {
-  text-shadow: 0.1cm 0.1cm 0 rgba(0, 0, 0, 0.75);
+  text-shadow: calc(var(--spacing) / 10) calc(var(--spacing) / 10) 0
+    rgba(0, 0, 0, 0.75);
 }
 
 .small-number {
-  font-size: 1cm;
+  font-size: var(--font-size-normal);
 }
 
 .small-number.white {
-  text-shadow: 0.05cm 0.05cm 0 rgba(0, 0, 0, 0.75);
+  text-shadow: calc(var(--spacing) / 20) calc(var(--spacing) / 20) 0
+    rgba(0, 0, 0, 0.75);
 }
 
 .left,
@@ -52,20 +44,20 @@
 }
 
 .left {
-  left: 0.25cm;
+  left: calc(var(--spacing) / 4);
 }
 
 .right {
-  right: 0.25cm;
+  right: calc(var(--spacing) / 4);
 }
 
 .bottom {
-  bottom: 0.25cm;
+  bottom: calc(var(--spacing) / 4);
   transform: rotate(180deg);
 }
 
 .top {
-  top: 0.25cm;
+  top: calc(var(--spacing) / 4);
 }
 
 .center {
