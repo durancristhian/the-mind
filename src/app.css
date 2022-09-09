@@ -9,4 +9,8 @@
   .cards-container {
     display: block;
   }
+
+  .cards-container:not(:last-child) {
+    margin-bottom: 1cm;
+  }
 }
