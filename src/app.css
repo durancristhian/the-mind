@@ -4,3 +4,9 @@
   flex-wrap: wrap;
   gap: 1cm;
 }
+
+@media print {
+  .cards-container {
+    display: block;
+  }
+}

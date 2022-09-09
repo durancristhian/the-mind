@@ -13,6 +13,17 @@
   white-space: nowrap;
 }
 
+@media print {
+  .card {
+    break-after: always;
+    break-inside: avoid;
+  }
+
+  .card:not(:last-child) {
+    margin-bottom: 1cm;
+  }
+}
+
 .white {
   color: white;
 }
