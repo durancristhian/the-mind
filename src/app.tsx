@@ -1,5 +1,6 @@
 import download from "downloadjs";
 import { getFontEmbedCSS, toJpeg } from "html-to-image";
+import { useState } from "preact/hooks";
 import "./app.css";
 import { Card } from "./card";
 import { EmptyCard } from "./empty-card";
@@ -50,21 +51,29 @@ const cards = Array.from({ length: 200 }).map((_, i) => ({
 }));
 
 export function App() {
-  const onGenerateImages = async (dataType: string) => {
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const onGenerateImages = async (
+    dataType: string,
+    start?: number | undefined,
+    end?: number | undefined
+  ) => {
+    setIsProcessing(true);
     const nodes = document.querySelectorAll(
       `[data-type="${dataType}"]`
     ) as NodeListOf<HTMLElement>;
     const elements = Array.from(nodes);
+    const exportableElements = elements.slice(start || 0, end);
 
-    const fontEmbedCSS = await getFontEmbedCSS(elements[0]);
+    const fontEmbedCSS = await getFontEmbedCSS(exportableElements[0]);
 
     Promise.all(
-      elements.map((element) =>
+      exportableElements.map((element) =>
         toJpeg(element, { fontEmbedCSS })
           .then((dataUrl) => download(dataUrl, element.id))
           .catch((error) => console.error(error))
       )
-    );
+    ).finally(() => setIsProcessing(false));
   };
 
   return (
@@ -72,11 +81,14 @@ export function App() {
       <h1 className="box">The mind</h1>
       <h2 className="box">Vidas (10)</h2>
       <div className="box">
-        <button onClick={() => onGenerateImages("live")}>
+        <button
+          onClick={() => onGenerateImages("live")}
+          disabled={isProcessing}
+        >
           Descargar vidas
         </button>
       </div>
-      <div className="cards-container">
+      <div className="container">
         {lives.map(({ backgroundImage, id }) => (
           <EmptyCard
             id={`live-${id}`}
@@ -87,11 +99,14 @@ export function App() {
       </div>
       <h2 className="box">Estrellitas (6)</h2>
       <div className="box">
-        <button onClick={() => onGenerateImages("star")}>
+        <button
+          onClick={() => onGenerateImages("star")}
+          disabled={isProcessing}
+        >
           Descargar estrellitas
         </button>
       </div>
-      <div className="cards-container">
+      <div className="container">
         {stars.map(({ backgroundImage, id }) => (
           <EmptyCard
             id={`star-${id}`}
@@ -102,11 +117,14 @@ export function App() {
       </div>
       <h2 className="box">Niveles (12)</h2>
       <div className="box">
-        <button onClick={() => onGenerateImages("level")}>
+        <button
+          onClick={() => onGenerateImages("level")}
+          disabled={isProcessing}
+        >
           Descargar niveles
         </button>
       </div>
-      <div className="cards-container">
+      <div className="container">
         {levels.map(({ backgroundImage, id, number }) => (
           <EmptyCard
             id={`level-${id}`}
@@ -119,11 +137,14 @@ export function App() {
       </div>
       <h2 className="box">Revés de las cartas ({cards.length})</h2>
       <div className="box">
-        <button onClick={() => onGenerateImages("back")}>
+        <button
+          onClick={() => onGenerateImages("back")}
+          disabled={isProcessing}
+        >
           Descargar revés
         </button>
       </div>
-      <div className="cards-container">
+      <div className="container">
         <EmptyCard
           id="back-1"
           dataType="back"
@@ -134,11 +155,18 @@ export function App() {
       </div>
       <h2 className="box">Cartas ({cards.length})</h2>
       <div className="box">
-        <button onClick={() => onGenerateImages("card")}>
-          Descargar cartas
-        </button>
+        <div className="container">
+          {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90].map((start) => (
+            <button
+              onClick={() => onGenerateImages("card", start, start + 10)}
+              disabled={isProcessing}
+            >
+              Descargar cartas ({start}-{start + 10})
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="cards-container">
+      <div className="container">
         {cards.map(({ backgroundImage, id, number }) => (
           <Card
             id={`card-${id}`}
