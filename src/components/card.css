@@ -3,9 +3,10 @@
   background-image: var(--card-bg);
   background-position: center center;
   background-size: cover;
-  /* border-radius: 0.5cm; */
+  border-radius: 0.5cm;
   border: calc(var(--spacing) / 4) solid #111;
   color: #111;
+  font-variant-numeric: tabular-nums;
   font-weight: bold;
   height: var(--card-height);
   position: relative;
