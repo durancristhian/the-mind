@@ -41,7 +41,7 @@ const stars = Array.from({ length: 6 }).map((_, i) => ({
 const levels = Array.from({ length: 12 }).map((_, i) => ({
   id: i + 1,
   number: i + 1,
-  backgroundImage: getImageUrl("back", 1),
+  backgroundImage: getImageUrl("levels", 1),
 }));
 
 const cards = Array.from({ length: 200 }).map((_, i) => ({
