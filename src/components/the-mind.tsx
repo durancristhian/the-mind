@@ -26,7 +26,7 @@ const levels = Array.from({ length: 12 }).map((_, i) => ({
 const cards = Array.from({ length: 200 }).map((_, i) => ({
   id: i + 1,
   number: addDotIfNeeded(`${i + 1}`),
-  backgroundImage: i + 1 < 101 ? getImageUrl("cards", i + 1) : null,
+  backgroundImage: i + 1 < 112 ? getImageUrl("cards", i + 1) : null,
 }));
 
 export function TheMind() {
