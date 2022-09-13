@@ -1,6 +1,6 @@
 import { Button, Container, Grid, Title } from "@mantine/core";
 import download from "downloadjs";
-import { getFontEmbedCSS, toJpeg } from "html-to-image";
+import { getFontEmbedCSS, toPng } from "html-to-image";
 import { useState } from "preact/hooks";
 import { addDotIfNeeded } from "../utils/add-dot-if-needed";
 import { getImageUrl } from "../utils/get-image-url";
@@ -48,7 +48,11 @@ export function TheMind() {
 
     Promise.all(
       exportableElements.map((element) =>
-        toJpeg(element, { fontEmbedCSS })
+        toPng(element, {
+          fontEmbedCSS,
+          canvasHeight: 1020,
+          canvasWidth: 680,
+        })
           .then((dataUrl) => download(dataUrl, element.id))
           .catch((error) => console.error(error))
       )
