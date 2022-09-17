@@ -70,7 +70,7 @@ export const App: FunctionComponent = () => {
                   onClick={() => {
                     onSetPage(id);
                   }}
-                  variant="light"
+                  variant="filled"
                   active={currentPage === id}
                 />
               ))}
