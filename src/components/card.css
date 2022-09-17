@@ -3,8 +3,6 @@
   background-image: var(--card-bg);
   background-position: center center;
   background-size: cover;
-  border-radius: 0.5cm;
-  border: calc(var(--spacing) / 4) solid #111;
   color: #111;
   font-variant-numeric: tabular-nums;
   font-weight: bold;
@@ -45,20 +43,20 @@
 }
 
 .left {
-  left: calc(var(--spacing) / 4);
+  left: var(--spacing);
 }
 
 .right {
-  right: calc(var(--spacing) / 4);
+  right: var(--spacing);
 }
 
 .bottom {
-  bottom: calc(var(--spacing) / 4);
+  bottom: var(--spacing);
   transform: rotate(180deg);
 }
 
 .top {
-  top: calc(var(--spacing) / 4);
+  top: var(--spacing);
 }
 
 .center {
@@ -66,4 +64,52 @@
   position: absolute;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.guideline {
+  bottom: calc(var(--spacing) / 2);
+  left: calc(var(--spacing) / 2);
+  position: absolute;
+  right: calc(var(--spacing) / 2);
+  top: calc(var(--spacing) / 2);
+}
+
+.guideline-1 {
+  border-bottom: 1px solid #111;
+  border-right: 1px solid #111;
+  height: calc(var(--spacing) / 2);
+  left: calc((var(--spacing) / 2) * -1);
+  position: absolute;
+  top: calc((var(--spacing) / 2) * -1);
+  width: calc(var(--spacing) / 2);
+}
+
+.guideline-2 {
+  border-bottom: 1px solid #111;
+  border-left: 1px solid #111;
+  height: calc(var(--spacing) / 2);
+  position: absolute;
+  right: calc((var(--spacing) / 2) * -1);
+  top: calc((var(--spacing) / 2) * -1);
+  width: calc(var(--spacing) / 2);
+}
+
+.guideline-3 {
+  border-right: 1px solid #111;
+  border-top: 1px solid #111;
+  bottom: calc((var(--spacing) / 2) * -1);
+  height: calc(var(--spacing) / 2);
+  left: calc((var(--spacing) / 2) * -1);
+  position: absolute;
+  width: calc(var(--spacing) / 2);
+}
+
+.guideline-4 {
+  border-left: 1px solid #111;
+  border-top: 1px solid #111;
+  bottom: calc((var(--spacing) / 2) * -1);
+  height: calc(var(--spacing) / 2);
+  position: absolute;
+  right: calc((var(--spacing) / 2) * -1);
+  width: calc(var(--spacing) / 2);
 }
