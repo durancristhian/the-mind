@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { FunctionComponent } from "preact";
 import "./card.css";
 
@@ -12,7 +13,7 @@ export const Card: FunctionComponent<{
     <div
       id={id}
       data-type={dataType}
-      className="card"
+      className={clsx("card", backgroundImage ? null : "border")}
       style={{ "--card-bg": `url('${backgroundImage}')` }}
     >
       {/* <div className="guideline">
