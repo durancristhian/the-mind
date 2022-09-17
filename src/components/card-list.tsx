@@ -1,4 +1,5 @@
-import { Box, Button, Group, List, Stack, Title } from "@mantine/core";
+import { Box, Button, Group, List, Stack, Tabs, Title } from "@mantine/core";
+import { IconPlayCard, IconPrinter } from "@tabler/icons";
 import download from "downloadjs";
 import { getFontEmbedCSS, toPng } from "html-to-image";
 import { FunctionComponent } from "preact";
@@ -47,18 +48,38 @@ export const CardList: FunctionComponent<{
   return (
     <Stack>
       <Title order={2}>{title}</Title>
-      <List spacing="md">
-        <List.Item>Cantidad: {amount}</List.Item>
-        <List.Item>Diseño: {design}</List.Item>
-      </List>
-      <Group>
-        {buttons.map((button) => (
-          <Button onClick={onGenerateImages} disabled={isProcessing}>
-            Descargar {button}-{button + 10 > amount ? amount : button + 10}
-          </Button>
-        ))}
-      </Group>
-      <Box>{children}</Box>
+      <Tabs defaultValue="design" variant="outline">
+        <Tabs.List>
+          <Tabs.Tab value="design" icon={<IconPlayCard />}>
+            Diseño
+          </Tabs.Tab>
+          <Tabs.Tab value="print" icon={<IconPrinter size={14} />}>
+            Impresión
+          </Tabs.Tab>
+        </Tabs.List>
+        <Tabs.Panel value="design" pt="md">
+          <Stack>
+            <List spacing="md">
+              <List.Item>Cantidad: {amount}</List.Item>
+              <List.Item>Tipo: {design}</List.Item>
+            </List>
+            <Group>
+              {buttons.map((button) => (
+                <Button onClick={onGenerateImages} disabled={isProcessing}>
+                  Descargar {button}-
+                  {button + 10 > amount ? amount : button + 10}
+                </Button>
+              ))}
+            </Group>
+            <Box>{children}</Box>
+          </Stack>
+        </Tabs.Panel>
+        <Tabs.Panel value="print" pt="md">
+          <Stack>
+            <Box></Box>
+          </Stack>
+        </Tabs.Panel>
+      </Tabs>
     </Stack>
   );
 };

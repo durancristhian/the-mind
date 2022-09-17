@@ -1,12 +1,13 @@
 import {
   AppShell,
+  Center,
   Header,
   MantineProvider,
   Navbar,
   NavLink,
   Title,
 } from "@mantine/core";
-import { IconPlayCard } from "@tabler/icons";
+import { IconElevator, IconHeart, IconNumber, IconStar } from "@tabler/icons";
 import { FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
 import { Levels } from "./pages/levels";
@@ -14,31 +15,31 @@ import { Lives } from "./pages/lives";
 import { Numbers } from "./pages/numbers";
 import { Stars } from "./pages/stars";
 
-const PAGES = [
+const DESIGN_PAGES = [
   {
     id: "lives",
     label: "Vidas",
-    Icon: IconPlayCard,
+    Icon: IconHeart,
   },
   {
     id: "stars",
     label: "Estrellitas",
-    Icon: IconPlayCard,
+    Icon: IconStar,
   },
   {
     id: "levels",
     label: "Niveles",
-    Icon: IconPlayCard,
+    Icon: IconElevator,
   },
   {
     id: "numbers",
     label: "Números",
-    Icon: IconPlayCard,
+    Icon: IconNumber,
   },
 ];
 
 export const App: FunctionComponent = () => {
-  const [currentPage, setCurrentPage] = useState(PAGES[0].id);
+  const [currentPage, setCurrentPage] = useState(DESIGN_PAGES[0].id);
 
   const onSetPage = (nextPage: string) => {
     setCurrentPage(nextPage);
@@ -56,14 +57,22 @@ export const App: FunctionComponent = () => {
       <AppShell
         padding="md"
         header={
-          <Header p="md" height={78}>
-            <Title order={1}>The mind</Title>
+          <Header height={64}>
+            <Center
+              sx={{
+                height: 64,
+              }}
+            >
+              <Title order={1} align="center">
+                The mind
+              </Title>
+            </Center>
           </Header>
         }
         navbar={
-          <Navbar width={{ base: 300 }} p="md">
+          <Navbar p="md" width={{ base: 300 }}>
             <Navbar.Section>
-              {PAGES.map(({ Icon, id, label }) => (
+              {DESIGN_PAGES.map(({ Icon, id, label }) => (
                 <NavLink
                   label={label}
                   icon={<Icon size={24} stroke={1.5} />}
@@ -78,10 +87,10 @@ export const App: FunctionComponent = () => {
           </Navbar>
         }
       >
-        {currentPage === PAGES[0].id && <Lives />}
-        {currentPage === PAGES[1].id && <Stars />}
-        {currentPage === PAGES[2].id && <Levels />}
-        {currentPage === PAGES[3].id && <Numbers />}
+        {currentPage === DESIGN_PAGES[0].id && <Lives />}
+        {currentPage === DESIGN_PAGES[1].id && <Stars />}
+        {currentPage === DESIGN_PAGES[2].id && <Levels />}
+        {currentPage === DESIGN_PAGES[3].id && <Numbers />}
       </AppShell>
     </MantineProvider>
   );
