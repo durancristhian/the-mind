@@ -9,7 +9,9 @@ import {
 import { IconPlayCard } from "@tabler/icons";
 import { FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
+import { Levels } from "./pages/levels";
 import { Lives } from "./pages/lives";
+import { Numbers } from "./pages/numbers";
 import { Stars } from "./pages/stars";
 
 const PAGES = [
@@ -21,6 +23,16 @@ const PAGES = [
   {
     id: "stars",
     label: "Estrellitas",
+    Icon: IconPlayCard,
+  },
+  {
+    id: "levels",
+    label: "Niveles",
+    Icon: IconPlayCard,
+  },
+  {
+    id: "numbers",
+    label: "Números",
     Icon: IconPlayCard,
   },
 ];
@@ -68,6 +80,8 @@ export const App: FunctionComponent = () => {
       >
         {currentPage === PAGES[0].id && <Lives />}
         {currentPage === PAGES[1].id && <Stars />}
+        {currentPage === PAGES[2].id && <Levels />}
+        {currentPage === PAGES[3].id && <Numbers />}
       </AppShell>
     </MantineProvider>
   );
