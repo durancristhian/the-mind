@@ -15,12 +15,12 @@ export const EmptyCard: FunctionComponent<{
       className="card"
       style={{ "--card-bg": `url('${backgroundImage}')` }}
     >
-      <div className="guideline">
+      {/* <div className="guideline">
         <div className="guideline-1"></div>
         <div className="guideline-2"></div>
         <div className="guideline-3"></div>
         <div className="guideline-4"></div>
-      </div>
+      </div> */}
       <div class={`small-number center ${textColor}`}>{children}</div>
     </div>
   );

@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.4",
     "@mantine/core": "^5.3.0",
     "@mantine/hooks": "^5.3.0",
+    "@tabler/icons": "^1.96.0",
     "downloadjs": "^1.4.7",
     "html-to-image": "^1.10.8",
     "preact": "^10.10.6"
