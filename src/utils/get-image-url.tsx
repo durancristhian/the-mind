@@ -1,3 +1,3 @@
-export function getImageUrl(concept: string, number: number | string) {
-  return new URL(`../images/${concept}/${number}.png`, import.meta.url).href;
+export function getImageUrl(folder: string, fileName: string) {
+  return new URL(`../images/${folder}/${fileName}.png`, import.meta.url).href;
 }

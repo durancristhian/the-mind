@@ -1,37 +1,31 @@
-import { Grid } from '@mantine/core';
 import { FunctionComponent } from 'preact';
 
-import { Card } from '../components/card';
 import { CardList } from '../components/card-list';
+import { TheMindCardProps } from '../components/the-mind-card';
+import { CARD_TYPES } from '../utils/constants';
 import { getImageUrl } from '../utils/get-image-url';
 
-const type = 'stars';
+const concept: CARD_TYPES = 'stars';
 
-const stars = Array.from({ length: 6 }).map((_, i) => ({
-  id: i + 1,
-  backgroundImage: getImageUrl(type, i + 1),
-}));
+const stars = Array.from({
+  length: 6,
+}).map<TheMindCardProps>((_, i) => {
+  const idx = `${i + 1}`;
+
+  return {
+    backgroundImage: getImageUrl(concept, idx),
+    id: `${concept}-${idx}`,
+    style: 'empty',
+  };
+});
 
 export const Stars: FunctionComponent = () => {
   return (
     <CardList
       amount={6}
+      cards={stars}
       design="Lo mismo de ambos lados"
       title="Estrellitas"
-      type={type}
-    >
-      <Grid>
-        {stars.map(({ backgroundImage, id }) => (
-          <Grid.Col key={id} span="content">
-            <Card
-              backgroundImage={backgroundImage}
-              dataType={type}
-              id={`${type}-${id}`}
-              type="empty"
-            />
-          </Grid.Col>
-        ))}
-      </Grid>
-    </CardList>
+    />
   );
 };

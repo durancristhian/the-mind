@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Grid,
   Group,
   List,
   Stack,
@@ -14,12 +15,14 @@ import { getFontEmbedCSS, toPng } from 'html-to-image';
 import { FunctionComponent } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
+import { TheMindCard, TheMindCardProps } from './the-mind-card';
+
 export const CardList: FunctionComponent<{
   amount: number;
+  cards: TheMindCardProps[];
   design: string;
   title: string;
-  type: 'lives' | 'stars' | 'levels' | 'numbers';
-}> = ({ amount, children, design, title, type }) => {
+}> = ({ amount, cards, design, title }) => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const buttons = useMemo(() => {
@@ -30,7 +33,7 @@ export const CardList: FunctionComponent<{
     setIsProcessing(true);
 
     const nodes = document.querySelectorAll(
-      `[data-type="${type}"]`,
+      `.card`,
       // eslint-disable-next-line no-undef
     ) as NodeListOf<HTMLElement>;
 
@@ -102,7 +105,13 @@ export const CardList: FunctionComponent<{
                   </Button>
                 ))}
               </Group>
-              <Box>{children}</Box>
+              <Grid>
+                {cards.map(({ id, ...rest }) => (
+                  <Grid.Col key={id} span="content">
+                    <TheMindCard id={id} {...rest} />
+                  </Grid.Col>
+                ))}
+              </Grid>
             </Stack>
           </Box>
         </Tabs.Panel>

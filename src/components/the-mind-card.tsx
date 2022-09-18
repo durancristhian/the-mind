@@ -1,24 +1,30 @@
-import './card.css';
+import './the-mind-card.css';
 
 import clsx from 'clsx';
 import { FunctionComponent } from 'preact';
 
-export const Card: FunctionComponent<{
+export interface TheMindCardProps {
   backgroundImage: string | null;
-  dataType: string;
   id: string;
   print?: boolean;
-  type: 'empty' | 'text' | 'number';
-}> = ({ backgroundImage, children, dataType, id, print, type }) => {
+  style: 'empty' | 'text' | 'number';
+}
+
+export const TheMindCard: FunctionComponent<TheMindCardProps> = ({
+  backgroundImage,
+  children,
+  id,
+  print,
+  style,
+}) => {
   const textColor = backgroundImage ? 'white' : 'black';
 
   return (
     <div
       id={id}
-      data-type={dataType}
       className={clsx(
         'card',
-        type,
+        style,
         textColor,
         backgroundImage ? null : 'border',
       )}
@@ -32,8 +38,8 @@ export const Card: FunctionComponent<{
           <div className="guideline-4" />
         </div>
       )}
-      {type === 'text' && <div className="small center">{children}</div>}
-      {type === 'number' && (
+      {style === 'text' && <div className="small center">{children}</div>}
+      {style === 'number' && (
         <>
           <div className="small top left">{children}</div>
           <div className="small top right">{children}</div>

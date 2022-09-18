@@ -1,41 +1,33 @@
-import { Grid } from '@mantine/core';
 import { FunctionComponent } from 'preact';
 
-import { Card } from '../components/card';
 import { CardList } from '../components/card-list';
+import { TheMindCardProps } from '../components/the-mind-card';
 import { addDotIfNeeded } from '../utils/add-dot-if-needed';
+import { CARD_TYPES } from '../utils/constants';
 import { getImageUrl } from '../utils/get-image-url';
 
-const type = 'numbers';
+const concept: CARD_TYPES = 'numbers';
 
-const cards = Array.from({ length: 200 }).map((_, i) => ({
-  id: i + 1,
-  number: addDotIfNeeded(`${i + 1}`),
-  backgroundImage: i + 1 < 128 ? getImageUrl(type, i + 1) : null,
-}));
+const numbers = Array.from({
+  length: 200,
+}).map<TheMindCardProps>((_, i) => {
+  const idx = `${i + 1}`;
+
+  return {
+    backgroundImage: i + 1 < 128 ? getImageUrl(concept, idx) : null,
+    children: addDotIfNeeded(`${idx}`),
+    id: `${concept}-${idx}`,
+    style: 'number',
+  };
+});
 
 export const Numbers: FunctionComponent = () => {
   return (
     <CardList
       amount={200}
+      cards={numbers}
       design="Frente distinto al dorso"
       title="Números"
-      type={type}
-    >
-      <Grid>
-        {cards.map(({ backgroundImage, id, number }) => (
-          <Grid.Col key={id} span="content">
-            <Card
-              backgroundImage={backgroundImage}
-              dataType={type}
-              id={`${type}-${id}`}
-              type="number"
-            >
-              {number}
-            </Card>
-          </Grid.Col>
-        ))}
-      </Grid>
-    </CardList>
+    />
   );
 };

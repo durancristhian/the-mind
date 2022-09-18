@@ -7,42 +7,15 @@ import {
   Stack,
   Title,
 } from '@mantine/core';
-import { IconElevator, IconHeart, IconNumber, IconStar } from '@tabler/icons';
 import { FunctionComponent } from 'preact';
 import { useState } from 'preact/hooks';
 
-import { Levels } from './pages/levels';
-import { Lives } from './pages/lives';
-import { Numbers } from './pages/numbers';
-import { Stars } from './pages/stars';
-
-const PAGES = [
-  {
-    id: 'lives',
-    label: 'Vidas',
-    Icon: IconHeart,
-  },
-  {
-    id: 'stars',
-    label: 'Estrellitas',
-    Icon: IconStar,
-  },
-  {
-    id: 'levels',
-    label: 'Niveles',
-    Icon: IconElevator,
-  },
-  {
-    id: 'numbers',
-    label: 'Números',
-    Icon: IconNumber,
-  },
-];
+import { Page, PAGES } from './utils/constants';
 
 export const App: FunctionComponent = () => {
-  const [currentPage, setCurrentPage] = useState(PAGES[0].id);
+  const [currentPage, setCurrentPage] = useState<Page>(PAGES[0]);
 
-  const onSetPage = (nextPage: string) => {
+  const onSetPage = (nextPage: Page) => {
     setCurrentPage(nextPage);
   };
 
@@ -62,16 +35,16 @@ export const App: FunctionComponent = () => {
                 The mind
               </Title>
               <Box>
-                {PAGES.map(({ Icon, id, label }) => (
+                {PAGES.map((page) => (
                   <NavLink
-                    key={id}
-                    label={label}
-                    icon={<Icon size={24} stroke={1.5} />}
+                    key={page.id}
+                    label={page.label}
+                    icon={<page.Icon size={24} stroke={1.5} />}
                     onClick={() => {
-                      onSetPage(id);
+                      onSetPage(page);
                     }}
                     variant="filled"
-                    active={currentPage === id}
+                    active={currentPage.id === page.id}
                   />
                 ))}
               </Box>
@@ -79,10 +52,7 @@ export const App: FunctionComponent = () => {
           </Navbar>
         }
       >
-        {currentPage === PAGES[0].id && <Lives />}
-        {currentPage === PAGES[1].id && <Stars />}
-        {currentPage === PAGES[2].id && <Levels />}
-        {currentPage === PAGES[3].id && <Numbers />}
+        <currentPage.Component />
       </AppShell>
     </MantineProvider>
   );
