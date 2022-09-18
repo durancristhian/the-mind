@@ -26,10 +26,7 @@ export const CardList: FunctionComponent<{
     return Array.from({ length: Math.ceil(amount / 10) }).map((_, i) => i * 10);
   }, [amount]);
 
-  const onGenerateImages = async (
-    start?: number | undefined,
-    end?: number | undefined
-  ) => {
+  const onGenerateImages = async (start: number) => {
     setIsProcessing(true);
 
     const nodes = document.querySelectorAll(
@@ -37,7 +34,7 @@ export const CardList: FunctionComponent<{
     ) as NodeListOf<HTMLElement>;
 
     const elements = Array.from(nodes);
-    const exportableElements = elements.slice(start || 0, end);
+    const exportableElements = elements.slice(start, start + 10);
 
     const fontEmbedCSS = await getFontEmbedCSS(exportableElements[0]);
 
@@ -92,8 +89,13 @@ export const CardList: FunctionComponent<{
               </List>
               <Group>
                 {buttons.map((button) => (
-                  <Button onClick={onGenerateImages} disabled={isProcessing}>
-                    Descargar {button}-
+                  <Button
+                    onClick={() => {
+                      onGenerateImages(button);
+                    }}
+                    disabled={isProcessing}
+                  >
+                    Descargar {button + 1}-
                     {button + 10 > amount ? amount : button + 10}
                   </Button>
                 ))}
