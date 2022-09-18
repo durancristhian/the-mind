@@ -1,10 +1,11 @@
-import { Grid } from "@mantine/core";
-import { FunctionComponent } from "preact";
-import { Card } from "../components/card";
-import { CardList } from "../components/card-list";
-import { getImageUrl } from "../utils/get-image-url";
+import { Grid } from '@mantine/core';
+import { FunctionComponent } from 'preact';
 
-const type = "levels";
+import { Card } from '../components/card';
+import { CardList } from '../components/card-list';
+import { getImageUrl } from '../utils/get-image-url';
+
+const type = 'levels';
 
 const levels = Array.from({ length: 12 }).map((_, i) => ({
   id: i + 1,
@@ -22,7 +23,7 @@ export const Levels: FunctionComponent = () => {
     >
       <Grid>
         {levels.map(({ backgroundImage, id, number }) => (
-          <Grid.Col span="content">
+          <Grid.Col key={id} span="content">
             <Card
               backgroundImage={backgroundImage}
               dataType={type}

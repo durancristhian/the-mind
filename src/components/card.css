@@ -8,8 +8,8 @@
   font-weight: bold;
   height: var(--card-height);
   position: relative;
-  width: var(--card-width);
   white-space: nowrap;
+  width: var(--card-width);
 }
 
 .white {

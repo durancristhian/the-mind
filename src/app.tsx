@@ -6,34 +6,35 @@ import {
   NavLink,
   Stack,
   Title,
-} from "@mantine/core";
-import { IconElevator, IconHeart, IconNumber, IconStar } from "@tabler/icons";
-import { FunctionComponent } from "preact";
-import { useState } from "preact/hooks";
-import { Levels } from "./pages/levels";
-import { Lives } from "./pages/lives";
-import { Numbers } from "./pages/numbers";
-import { Stars } from "./pages/stars";
+} from '@mantine/core';
+import { IconElevator, IconHeart, IconNumber, IconStar } from '@tabler/icons';
+import { FunctionComponent } from 'preact';
+import { useState } from 'preact/hooks';
+
+import { Levels } from './pages/levels';
+import { Lives } from './pages/lives';
+import { Numbers } from './pages/numbers';
+import { Stars } from './pages/stars';
 
 const PAGES = [
   {
-    id: "lives",
-    label: "Vidas",
+    id: 'lives',
+    label: 'Vidas',
     Icon: IconHeart,
   },
   {
-    id: "stars",
-    label: "Estrellitas",
+    id: 'stars',
+    label: 'Estrellitas',
     Icon: IconStar,
   },
   {
-    id: "levels",
-    label: "Niveles",
+    id: 'levels',
+    label: 'Niveles',
     Icon: IconElevator,
   },
   {
-    id: "numbers",
-    label: "Números",
+    id: 'numbers',
+    label: 'Números',
     Icon: IconNumber,
   },
 ];
@@ -63,6 +64,7 @@ export const App: FunctionComponent = () => {
               <Box>
                 {PAGES.map(({ Icon, id, label }) => (
                   <NavLink
+                    key={id}
                     label={label}
                     icon={<Icon size={24} stroke={1.5} />}
                     onClick={() => {

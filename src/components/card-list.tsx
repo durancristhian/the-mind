@@ -7,18 +7,18 @@ import {
   Tabs,
   Text,
   Title,
-} from "@mantine/core";
-import { IconPlayCard, IconPrinter } from "@tabler/icons";
-import download from "downloadjs";
-import { getFontEmbedCSS, toPng } from "html-to-image";
-import { FunctionComponent } from "preact";
-import { useMemo, useState } from "preact/hooks";
+} from '@mantine/core';
+import { IconPlayCard, IconPrinter } from '@tabler/icons';
+import download from 'downloadjs';
+import { getFontEmbedCSS, toPng } from 'html-to-image';
+import { FunctionComponent } from 'preact';
+import { useMemo, useState } from 'preact/hooks';
 
 export const CardList: FunctionComponent<{
   amount: number;
   design: string;
   title: string;
-  type: "lives" | "stars" | "levels" | "numbers";
+  type: 'lives' | 'stars' | 'levels' | 'numbers';
 }> = ({ amount, children, design, title, type }) => {
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -30,7 +30,8 @@ export const CardList: FunctionComponent<{
     setIsProcessing(true);
 
     const nodes = document.querySelectorAll(
-      `[data-type="${type}"]`
+      `[data-type="${type}"]`,
+      // eslint-disable-next-line no-undef
     ) as NodeListOf<HTMLElement>;
 
     const elements = Array.from(nodes);
@@ -46,8 +47,8 @@ export const CardList: FunctionComponent<{
           canvasWidth: 680,
         })
           .then((dataUrl) => download(dataUrl, element.id))
-          .catch((error) => console.error(error))
-      )
+          .catch((error) => console.error(error)),
+      ),
     ).finally(() => setIsProcessing(false));
   };
 
@@ -75,13 +76,13 @@ export const CardList: FunctionComponent<{
             <Stack>
               <List spacing="md">
                 <List.Item>
-                  Cantidad:{" "}
+                  Cantidad:{' '}
                   <Text weight="bold" component="span">
                     {amount}
                   </Text>
                 </List.Item>
                 <List.Item>
-                  Tipo:{" "}
+                  Tipo:{' '}
                   <Text weight="bold" component="span">
                     {design}
                   </Text>
@@ -90,6 +91,7 @@ export const CardList: FunctionComponent<{
               <Group>
                 {buttons.map((button) => (
                   <Button
+                    key={button}
                     onClick={() => {
                       onGenerateImages(button);
                     }}

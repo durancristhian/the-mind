@@ -1,11 +1,12 @@
-import { Grid } from "@mantine/core";
-import { FunctionComponent } from "preact";
-import { Card } from "../components/card";
-import { CardList } from "../components/card-list";
-import { addDotIfNeeded } from "../utils/add-dot-if-needed";
-import { getImageUrl } from "../utils/get-image-url";
+import { Grid } from '@mantine/core';
+import { FunctionComponent } from 'preact';
 
-const type = "numbers";
+import { Card } from '../components/card';
+import { CardList } from '../components/card-list';
+import { addDotIfNeeded } from '../utils/add-dot-if-needed';
+import { getImageUrl } from '../utils/get-image-url';
+
+const type = 'numbers';
 
 const cards = Array.from({ length: 200 }).map((_, i) => ({
   id: i + 1,
@@ -23,7 +24,7 @@ export const Numbers: FunctionComponent = () => {
     >
       <Grid>
         {cards.map(({ backgroundImage, id, number }) => (
-          <Grid.Col span="content">
+          <Grid.Col key={id} span="content">
             <Card
               backgroundImage={backgroundImage}
               dataType={type}
