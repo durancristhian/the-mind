@@ -21,16 +21,16 @@
   text-align: center;
 }
 
-.number.white {
+.white .number {
   text-shadow: calc(var(--spacing) / 10) calc(var(--spacing) / 10) 0
     rgba(0, 0, 0, 0.75);
 }
 
-.small-number {
+.small {
   font-size: var(--font-size-normal);
 }
 
-.small-number.white {
+.white .small {
   text-shadow: calc(var(--spacing) / 20) calc(var(--spacing) / 20) 0
     rgba(0, 0, 0, 0.75);
 }

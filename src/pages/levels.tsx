@@ -1,7 +1,7 @@
 import { Grid } from "@mantine/core";
 import { FunctionComponent } from "preact";
+import { Card } from "../components/card";
 import { CardList } from "../components/card-list";
-import { EmptyCard } from "../components/empty-card";
 import { getImageUrl } from "../utils/get-image-url";
 
 const type = "levels";
@@ -15,21 +15,22 @@ const levels = Array.from({ length: 12 }).map((_, i) => ({
 export const Levels: FunctionComponent = () => {
   return (
     <CardList
-      title="Niveles"
       amount={12}
       design="Lo mismo de ambos lados"
+      title="Niveles"
       type={type}
     >
       <Grid>
         {levels.map(({ backgroundImage, id, number }) => (
           <Grid.Col span="content">
-            <EmptyCard
-              id={`${type}-${id}`}
-              dataType={type}
+            <Card
               backgroundImage={backgroundImage}
+              dataType={type}
+              id={`${type}-${id}`}
+              type="text"
             >
               Nivel {number}
-            </EmptyCard>
+            </Card>
           </Grid.Col>
         ))}
       </Grid>

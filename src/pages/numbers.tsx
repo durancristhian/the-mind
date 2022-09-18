@@ -16,18 +16,19 @@ const cards = Array.from({ length: 200 }).map((_, i) => ({
 export const Numbers: FunctionComponent = () => {
   return (
     <CardList
-      title="Números"
       amount={200}
       design="Frente distinto al dorso"
+      title="Números"
       type={type}
     >
       <Grid>
         {cards.map(({ backgroundImage, id, number }) => (
           <Grid.Col span="content">
             <Card
-              id={`${type}-${id}`}
-              dataType={type}
               backgroundImage={backgroundImage}
+              dataType={type}
+              id={`${type}-${id}`}
+              type="number"
             >
               {number}
             </Card>

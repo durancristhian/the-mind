@@ -15,7 +15,7 @@ import { Lives } from "./pages/lives";
 import { Numbers } from "./pages/numbers";
 import { Stars } from "./pages/stars";
 
-const DESIGN_PAGES = [
+const PAGES = [
   {
     id: "lives",
     label: "Vidas",
@@ -39,7 +39,7 @@ const DESIGN_PAGES = [
 ];
 
 export const App: FunctionComponent = () => {
-  const [currentPage, setCurrentPage] = useState(DESIGN_PAGES[0].id);
+  const [currentPage, setCurrentPage] = useState(PAGES[0].id);
 
   const onSetPage = (nextPage: string) => {
     setCurrentPage(nextPage);
@@ -47,11 +47,11 @@ export const App: FunctionComponent = () => {
 
   return (
     <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
       theme={{
         fontFamily: `"Montserrat", serif !important`,
       }}
+      withGlobalStyles
+      withNormalizeCSS
     >
       <AppShell
         navbar={
@@ -61,7 +61,7 @@ export const App: FunctionComponent = () => {
                 The mind
               </Title>
               <Box>
-                {DESIGN_PAGES.map(({ Icon, id, label }) => (
+                {PAGES.map(({ Icon, id, label }) => (
                   <NavLink
                     label={label}
                     icon={<Icon size={24} stroke={1.5} />}
@@ -77,10 +77,10 @@ export const App: FunctionComponent = () => {
           </Navbar>
         }
       >
-        {currentPage === DESIGN_PAGES[0].id && <Lives />}
-        {currentPage === DESIGN_PAGES[1].id && <Stars />}
-        {currentPage === DESIGN_PAGES[2].id && <Levels />}
-        {currentPage === DESIGN_PAGES[3].id && <Numbers />}
+        {currentPage === PAGES[0].id && <Lives />}
+        {currentPage === PAGES[1].id && <Stars />}
+        {currentPage === PAGES[2].id && <Levels />}
+        {currentPage === PAGES[3].id && <Numbers />}
       </AppShell>
     </MantineProvider>
   );

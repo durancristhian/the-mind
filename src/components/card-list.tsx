@@ -15,9 +15,9 @@ import { FunctionComponent } from "preact";
 import { useMemo, useState } from "preact/hooks";
 
 export const CardList: FunctionComponent<{
-  title: string;
   amount: number;
   design: string;
+  title: string;
   type: "lives" | "stars" | "levels" | "numbers";
 }> = ({ amount, children, design, title, type }) => {
   const [isProcessing, setIsProcessing] = useState(false);

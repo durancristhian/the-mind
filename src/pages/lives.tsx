@@ -1,7 +1,7 @@
 import { Grid } from "@mantine/core";
 import { FunctionComponent } from "preact";
+import { Card } from "../components/card";
 import { CardList } from "../components/card-list";
-import { EmptyCard } from "../components/empty-card";
 import { getImageUrl } from "../utils/get-image-url";
 
 const type = "lives";
@@ -14,18 +14,19 @@ const lives = Array.from({ length: 10 }).map((_, i) => ({
 export const Lives: FunctionComponent = () => {
   return (
     <CardList
-      title="Vidas"
       amount={10}
       design="Lo mismo de ambos lados"
+      title="Vidas"
       type={type}
     >
       <Grid>
         {lives.map(({ backgroundImage, id }) => (
           <Grid.Col span="content">
-            <EmptyCard
-              id={`${type}-${id}`}
-              dataType={type}
+            <Card
               backgroundImage={backgroundImage}
+              dataType={type}
+              id={`${type}-${id}`}
+              type="empty"
             />
           </Grid.Col>
         ))}
