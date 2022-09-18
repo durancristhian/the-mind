@@ -1,10 +1,10 @@
 import {
   AppShell,
-  Center,
-  Header,
+  Box,
   MantineProvider,
   Navbar,
   NavLink,
+  Stack,
   Title,
 } from "@mantine/core";
 import { IconElevator, IconHeart, IconNumber, IconStar } from "@tabler/icons";
@@ -50,40 +50,30 @@ export const App: FunctionComponent = () => {
       withGlobalStyles
       withNormalizeCSS
       theme={{
-        fontFamily: `"Montserrat", serif`,
-        lineHeight: 1,
+        fontFamily: `"Montserrat", serif !important`,
       }}
     >
       <AppShell
-        padding="md"
-        header={
-          <Header height={64}>
-            <Center
-              sx={{
-                height: 64,
-              }}
-            >
+        navbar={
+          <Navbar width={{ base: 300 }} pt="md">
+            <Stack>
               <Title order={1} align="center">
                 The mind
               </Title>
-            </Center>
-          </Header>
-        }
-        navbar={
-          <Navbar p="md" width={{ base: 300 }}>
-            <Navbar.Section>
-              {DESIGN_PAGES.map(({ Icon, id, label }) => (
-                <NavLink
-                  label={label}
-                  icon={<Icon size={24} stroke={1.5} />}
-                  onClick={() => {
-                    onSetPage(id);
-                  }}
-                  variant="filled"
-                  active={currentPage === id}
-                />
-              ))}
-            </Navbar.Section>
+              <Box>
+                {DESIGN_PAGES.map(({ Icon, id, label }) => (
+                  <NavLink
+                    label={label}
+                    icon={<Icon size={24} stroke={1.5} />}
+                    onClick={() => {
+                      onSetPage(id);
+                    }}
+                    variant="filled"
+                    active={currentPage === id}
+                  />
+                ))}
+              </Box>
+            </Stack>
           </Navbar>
         }
       >

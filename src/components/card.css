@@ -43,20 +43,20 @@
 }
 
 .left {
-  left: var(--spacing);
+  left: calc(var(--spacing) / 2);
 }
 
 .right {
-  right: var(--spacing);
+  right: calc(var(--spacing) / 2);
 }
 
 .bottom {
-  bottom: var(--spacing);
+  bottom: calc(var(--spacing) / 2);
   transform: rotate(180deg);
 }
 
 .top {
-  top: var(--spacing);
+  top: calc(var(--spacing) / 2);
 }
 
 .center {

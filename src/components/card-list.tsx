@@ -1,4 +1,13 @@
-import { Box, Button, Group, List, Stack, Tabs, Title } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Group,
+  List,
+  Stack,
+  Tabs,
+  Text,
+  Title,
+} from "@mantine/core";
 import { IconPlayCard, IconPrinter } from "@tabler/icons";
 import download from "downloadjs";
 import { getFontEmbedCSS, toPng } from "html-to-image";
@@ -53,31 +62,59 @@ export const CardList: FunctionComponent<{
           <Tabs.Tab value="design" icon={<IconPlayCard />}>
             Diseño
           </Tabs.Tab>
-          <Tabs.Tab value="print" icon={<IconPrinter size={14} />}>
+          <Tabs.Tab value="print" icon={<IconPrinter size={14} />} disabled>
             Impresión
           </Tabs.Tab>
         </Tabs.List>
-        <Tabs.Panel value="design" pt="md">
-          <Stack>
-            <List spacing="md">
-              <List.Item>Cantidad: {amount}</List.Item>
-              <List.Item>Tipo: {design}</List.Item>
-            </List>
-            <Group>
-              {buttons.map((button) => (
-                <Button onClick={onGenerateImages} disabled={isProcessing}>
-                  Descargar {button}-
-                  {button + 10 > amount ? amount : button + 10}
-                </Button>
-              ))}
-            </Group>
-            <Box>{children}</Box>
-          </Stack>
+        <Tabs.Panel value="design">
+          <Box
+            p="md"
+            sx={(theme) => ({
+              borderLeft: `1px solid ${theme.colors.gray[3]}`,
+              borderRight: `1px solid ${theme.colors.gray[3]}`,
+              borderBottom: `1px solid ${theme.colors.gray[3]}`,
+            })}
+          >
+            <Stack>
+              <List spacing="md">
+                <List.Item>
+                  Cantidad:{" "}
+                  <Text weight="bold" component="span">
+                    {amount}
+                  </Text>
+                </List.Item>
+                <List.Item>
+                  Tipo:{" "}
+                  <Text weight="bold" component="span">
+                    {design}
+                  </Text>
+                </List.Item>
+              </List>
+              <Group>
+                {buttons.map((button) => (
+                  <Button onClick={onGenerateImages} disabled={isProcessing}>
+                    Descargar {button}-
+                    {button + 10 > amount ? amount : button + 10}
+                  </Button>
+                ))}
+              </Group>
+              <Box>{children}</Box>
+            </Stack>
+          </Box>
         </Tabs.Panel>
-        <Tabs.Panel value="print" pt="md">
-          <Stack>
-            <Box></Box>
-          </Stack>
+        <Tabs.Panel value="print">
+          <Box
+            p="md"
+            sx={(theme) => ({
+              borderLeft: `1px solid ${theme.colors.gray[3]}`,
+              borderRight: `1px solid ${theme.colors.gray[3]}`,
+              borderBottom: `1px solid ${theme.colors.gray[3]}`,
+            })}
+          >
+            <Stack>
+              <Box></Box>
+            </Stack>
+          </Box>
         </Tabs.Panel>
       </Tabs>
     </Stack>
